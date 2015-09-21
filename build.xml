@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="PROJECT-ID" default="help">
+    <!-- Файлы, которые могут быть изменены владельцем и группой -->
+    <fileset dir="." id="writables">
+        <include name="runtime"/>
+        <include name="web/assets"/>
+    </fileset>
+
+    <!-- Файлы, которые могут быть исполнены владельцем и группой -->
+    <fileset dir="." id="executables">
+        <include name="yii"/>
+    </fileset>
+
+    <!-- Файлы, которые могут быть удалены -->
+    <fileset dir="." id="temp">
+        <include name="runtime/**"/>
+        <include name="web/assets/**"/>
+        <exclude name=".gitignore"/>
+        <exclude name=".htaccess"/>
+    </fileset>
+
+    <!-- Все PHP скрипты -->
+    <fileset dir="." id="phpFiles">
+        <type type="file"/>
+        <include name="**/*.php"/>
+        <exclude name="web/assets/**"/>
+        <exclude name="vendor/**"/>
+        <exclude name="models/_base/**"/>
+    </fileset>
+
+    <!-- Все JS скрипты -->
+     <fileset dir="." id="jsFiles">
+        <type type="file"/>
+        <include name="**/*.js"/>
+        <exclude name="web/assets/**"/>
+        <exclude name="vendor/**"/>
+    </fileset>
+
+    <target name="help">
+        <echo>Short list of available commands:
+
+        * install   - install app and its deps, set up correct permissions 
+        * update    - update everything, probably it is what you need</echo>
+    </target>
+
+    <target name="gitpull">
+        <echo>Pulling changes from repo</echo>
+        <exec dir="." command="git pull" logoutput="true" checkreturn="true" />
+    </target>
+
+    <target name="composerinstall">
+        <echo>Installing Composer dependencies</echo>
+        <exec command="composer install --prefer-dist" logoutput="true" checkreturn="true"/>
+    </target>
+
+    <target name="migrate">
+        <echo>Migrating DB</echo>
+        <exec dir="./" command="php yii migrate --interactive=0" passthru="true" checkreturn="true"/>
+    </target>
+
+    <target name="flush">
+        <echo>Flushing cache</echo>
+        <exec dir="." command="php yii cache/flush cache --interactive=0" passthru="true" checkreturn="true"/>
+    </target>
+
+    <target name="classmap">
+        <echo>Generating classmap</echo>
+        <exec dir="." command="php yii classmap/generate" logoutput="true" checkreturn="true"/>
+    </target>
+
+    <target name="setperms">
+        <echo>Setting correct permissions</echo>
+        <chmod mode="0770" verbose="false">
+            <fileset refid="writables"/>
+        </chmod>
+        <chmod mode="0750" verbose="false">
+            <fileset refid="executables"/>
+        </chmod>
+    </target>
+
+    <target name="clearassets">
+        <echo>Deleting everything in assets folder</echo>
+        <delete includeemptydirs="true">
+            <fileset refid="temp"/>
+        </delete>
+    </target>
+
+    <target name="lintphp">
+        <phplint 
+            haltonfailure="true" 
+            cachefile="./runtime/phplint-cache" 
+            deprecatedAsError="true"
+        >
+            <fileset refid="phpFiles"/>
+        </phplint>
+    </target>
+
+    <target name="lintjs">
+        <jsllint 
+            haltonfailure="true" 
+            showwarnings="false"
+            cachefile="./runtime/jslint-cache" 
+            conffile="./data/jsl.conf"
+        >
+            <fileset refid="jsFiles"/>
+        </jsllint>
+    </target>
+
+    <target name="update">
+        <echo>Updating app</echo>
+        <phingcall target="gitpull" />
+        <phingcall target="composerinstall"/>
+        <phingcall target="setperms"/>
+        <phingcall target="flush"/>
+        <phingcall target="migrate"/>
+        <phingcall target="classmap"/>
+        <phingcall target="clearassets"/>
+    </target>
+
+    <target name="install">
+        <echo>Installing app</echo>
+        <echo file="./config/current_env">dev</echo>
+        <phingcall target="composerinstall"/>
+        <phingcall target="setperms"/>
+        <phingcall target="migrate"/>
+    </target>
+</project>

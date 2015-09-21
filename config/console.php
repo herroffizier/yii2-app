@@ -1,38 +1,34 @@
 <?php
 
-Yii::setAlias('@tests', dirname(__DIR__) . '/tests');
+// @codingStandardsIgnoreFile
 
-$params = require(__DIR__ . '/params.php');
-$db = require(__DIR__ . '/db.php');
+Yii::setAlias('@tests', dirname(__DIR__).'/tests');
+Yii::setAlias('@webroot', dirname(__DIR__).'/web/');
+Yii::setAlias('@web', WEB_ALIAS);
 
 $config = [
-    'id' => 'basic-console',
-    'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'id' => 'PROJECT-NAME',
     'controllerNamespace' => 'app\commands',
+    'modules' => [
+        'gii' => 'yii\gii\Module',
+    ],
     'components' => [
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => 'yii\caching\MemCache',
         ],
         'log' => [
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                ],
-            ],
         ],
-        'db' => $db,
+        'uploads' => [
+            'class' => 'app\components\UploadManager',
+            'uploadDir' => '@app/web/upload',
+        ],
+        'urlManager' => [
+            'baseUrl' => WEB_ALIAS,
+            'hostInfo' => WEB_HOST,
+        ],
     ],
-    'params' => $params,
 ];
 
-if (YII_ENV_DEV) {
-    // configuration adjustments for 'dev' environment
-    $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = [
-        'class' => 'yii\gii\Module',
-    ];
-}
+$config = \yii\helpers\ArrayHelper::merge(require __DIR__.'/common.php', $config);
 
 return $config;
