@@ -86,7 +86,7 @@ class ProjectController extends ConsoleController
             '@app/Vagrantfile' => ['VAGRANT-IP', 'PROJECT-ID'],
             '@app/config/web.php' => ['PROJECT-NAME'],
             '@app/config/console.php' => ['PROJECT-NAME'],
-            '@app/config/env/vagrant.php' => ['PROJECT-ID'],
+            '@app/config/env/vagrant.php' => ['VAGRANT-IP', 'PROJECT-ID'],
         ];
 
         $this->replaceInFiles($files, $values);
