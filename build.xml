@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="PROJECT-ID" default="help">
-    <!-- Файлы, которые могут быть изменены владельцем и группой -->
     <fileset dir="." id="writables">
         <include name="runtime"/>
         <include name="web/assets"/>
     </fileset>
 
-    <!-- Файлы, которые могут быть исполнены владельцем и группой -->
     <fileset dir="." id="executables">
         <include name="yii"/>
     </fileset>
 
-    <!-- Файлы, которые могут быть удалены -->
     <fileset dir="." id="temp">
         <include name="runtime/**"/>
         <include name="web/assets/**"/>
@@ -19,7 +16,6 @@
         <exclude name=".htaccess"/>
     </fileset>
 
-    <!-- Все PHP скрипты -->
     <fileset dir="." id="phpFiles">
         <type type="file"/>
         <include name="**/*.php"/>
@@ -37,10 +33,19 @@
     </fileset>
 
     <target name="help">
-        <echo>Short list of available commands:
+        <echo>Most used commands:
 
-        * install   - install app and its deps, set up correct permissions 
-        * update    - update everything, probably it is what you need</echo>
+        * install       - install app and its deps, set up correct permissions 
+        * update        - update everything, probably it is what you need
+
+Lower level commands:
+        * migrate       - apply db migrations
+        * flush         - flush app cache
+        * classmap      - generate classmap
+        * setperms      - set correct permissions to files
+        * clearassets   - clear assets folder
+        * lintphp       - check PHP syntax
+    </echo>
     </target>
 
     <target name="gitpull">
@@ -93,17 +98,6 @@
         >
             <fileset refid="phpFiles"/>
         </phplint>
-    </target>
-
-    <target name="lintjs">
-        <jsllint 
-            haltonfailure="true" 
-            showwarnings="false"
-            cachefile="./runtime/jslint-cache" 
-            conffile="./data/jsl.conf"
-        >
-            <fileset refid="jsFiles"/>
-        </jsllint>
     </target>
 
     <target name="update">
