@@ -1,6 +1,6 @@
 {
     "name": "herroffizier/yii2-app-basic",
-    "description": "My Yii2 Project template based on yii2-app-basic",
+    "description": "Customized Yii 2 basic application template with phing, vagrant, user authentication and backoffice",
     "keywords": ["yii2", "framework", "basic", "project template"],
     "type": "project",
     "license": "BSD-3-Clause",
