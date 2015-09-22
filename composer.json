@@ -1,5 +1,6 @@
 {
     "name": "herroffizier/yii2-app",
+    "description": "Custom Yii 2 application template with user authentication, backoffice, phing and vagrant intergration",
     "type": "project",
     "license": "BSD-3-Clause",
     "minimum-stability": "dev",
