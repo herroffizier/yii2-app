@@ -7,6 +7,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use yii\helpers\Url;
 use app\assets\BackOfficeAsset;
+use app\helpers\StringHelper;
 /* @var $this \yii\web\View */
 /* @var $content string */
 BackOfficeAsset::register($this);
