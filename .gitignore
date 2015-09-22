@@ -9,6 +9,9 @@ nbproject
 .project
 .settings
 
+# st2/st3 project files
+*.sublime-*
+
 # windows thumbnail cache
 Thumbs.db
 
@@ -26,5 +29,23 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
-# Vagrant files
+# vagrant files
 /.vagrant
+
+# yii 2 public assets folder
+web/assets/*
+
+# upload folder
+web/upload/*
+
+# runtime folder
+runtime/*
+
+# current env file 
+config/current_env
+
+# classmap produced by classmap command
+config/classes.php
+
+# db dumps produced by db command
+*.sql
