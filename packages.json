@@ -1,0 +1,11 @@
+{
+    "package": {
+        "name": "herroffizier/yii2-app",
+        "version": "1.0.0",
+        "source": {
+          "url": "https://github.com/herroffizier/yii2-app.git",
+          "type": "git",
+          "reference": "master"
+        }
+    }
+}
