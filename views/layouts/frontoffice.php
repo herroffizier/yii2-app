@@ -36,12 +36,12 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Home', 'url' => ['frontoffice/site/index']],
             Yii::$app->user->isGuest ?
-                ['label' => 'Login', 'url' => ['/auth/login']] :
+                ['label' => 'Login', 'url' => ['frontoffice/auth/login']] :
                 [
                     'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                    'url' => ['/auth/logout'],
+                    'url' => ['frontoffice/auth/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ],
         ],

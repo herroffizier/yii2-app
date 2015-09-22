@@ -55,9 +55,9 @@ BackOfficeAsset::register($this);
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => array_merge($items, [
                     Yii::$app->user->isGuest ?
-                        ['label' => 'Войти', 'url' => ['/auth/login']] :
+                        ['label' => 'Войти', 'url' => ['frontoffice/auth/login']] :
                         ['label' => 'Выйти ('.Yii::$app->user->identity->email.')',
-                            'url' => ['/auth/logout'],
+                            'url' => ['frontoffice/auth/logout'],
                             'linkOptions' => ['data-method' => 'post']],
                 ]),
             ]);

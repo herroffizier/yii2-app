@@ -11,10 +11,10 @@ return [
 
         '<page:about>' => 'page/index',
 
-        '/' => 'site/index',
+        '/' => 'frontoffice/site/index',
 
-        '<action:login|logout>' => 'auth/<action>',
+        '<action:login|logout>' => 'frontoffice/auth/<action>',
 
-        '<controller:[\w\-_]+>' => '<controller>/index',
-        '<controller:[\w\-_]+>/<action:[\w\-_]+>' => '<controller>/<action>',
+        '<controller:[\w\-_]+>' => 'frontoffice/<controller>/index',
+        '<controller:[\w\-_]+>/<action:[\w\-_]+>' => 'frontoffice/<controller>/<action>',
 ];

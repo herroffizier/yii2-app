@@ -1,8 +1,6 @@
 <?php
 
-namespace app\controllers;
-
-use app\base\FrontOfficeController;
+namespace app\controllers\frontoffice;
 
 class PageController extends FrontOfficeController
 {

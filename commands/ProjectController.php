@@ -12,7 +12,7 @@ use app\base\ConsoleController;
  */
 class ProjectController extends ConsoleController
 {
-    public $dryRun = true;
+    public $dryRun = false;
 
     protected function replaceInFile($path, array $replaces)
     {
