@@ -8,8 +8,8 @@ INSTALLATION
 
 First step is to create project via Composer:
 ~~~
-composer global require "fxp/composer-asset-plugin:~1.0.0"
-composer create-project --prefer-dist --stability=dev herroffizier/yii2-app my-app
+composer global require "fxp/composer-asset-plugin:~1.0.3"
+composer create-project --prefer-dist herroffizier/yii2-app my-app
 ~~~
 
 After that go to new project's directory and init project with built-in wizard. It will replace placeholders in various config files to actual values.
