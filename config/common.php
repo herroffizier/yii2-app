@@ -47,7 +47,6 @@ return [
         ],
 
         'formatter' => [
-            'class' => 'app\components\CachingFormatter',
             'locale' => 'ru_RU',
             'numberFormatterOptions' => [
                 NumberFormatter::FRACTION_DIGITS => 0,

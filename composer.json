@@ -3,7 +3,7 @@
     "description": "Custom Yii 2 application template with user authentication, backoffice, phing and vagrant intergration",
     "type": "project",
     "license": "BSD-3-Clause",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.6",
