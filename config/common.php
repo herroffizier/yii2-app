@@ -37,11 +37,6 @@ return [
             'rules' => require __DIR__.'/rules.php',
         ],
 
-        'uploads' => [
-            'class' => 'app\components\UploadManager',
-            'uploadDir' => NONREPO_ALIAS.'/upload',
-        ],
-
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
         ],

@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "herroffizier/centos-6.5-i686"
+  config.vm.box = "herroffizier/php7"
 
   config.vm.network "private_network", ip: "VAGRANT-IP"
 
@@ -13,8 +13,10 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision "shell", inline: <<-SHELL
-    replace localhost.localdomain PROJECT-ID -- /etc/sysconfig/network /etc/hosts
-    hostname PROJECT-ID
-    mysqladmin create PROJECT-ID
+    replace "localhost.localdomain" "PROJECT-ID" -- /etc/sysconfig/network /etc/hosts
+    replace "/vagrant" "/vagrant/web" -- /etc/nginx/conf.d/default.conf
+    service nginx reload
+    hostname "PROJECT-ID"
+    mysqladmin create "PROJECT-ID"
   SHELL
 end
