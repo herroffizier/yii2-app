@@ -5,6 +5,7 @@ namespace app\commands;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\helpers\Inflector;
+use yii\helpers\Console;
 use yii\base\Controller;
 
 /**
@@ -67,13 +68,13 @@ class ProjectController extends Controller
         $rawProjectName = Inflector::camelize($rawProjectName);
 
         $projectId = Inflector::camel2id($rawProjectName);
-        $projectId = $this->prompt('Project id', ['default' => $projectId]);
+        $projectId = Console::prompt('Project id', ['default' => $projectId]);
 
         $projectName = Inflector::titleize($projectId);
-        $projectName = $this->prompt('Project name', ['default' => $projectName]);
+        $projectName = Console::prompt('Project name', ['default' => $projectName]);
 
         $vagrantIp = '192.168.33.'.rand(100, 254);
-        $vagrantIp = $this->prompt('Vagrant IP', ['default' => $vagrantIp]);
+        $vagrantIp = Console::prompt('Vagrant IP', ['default' => $vagrantIp]);
 
         $values = [
             'PROJECT-ID' => $projectId,

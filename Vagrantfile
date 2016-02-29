@@ -13,8 +13,10 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision "shell", inline: <<-SHELL
-    replace localhost.localdomain PROJECT-ID -- /etc/sysconfig/network /etc/hosts
-    hostname PROJECT-ID
-    mysqladmin create PROJECT-ID
+    replace "localhost.localdomain" "PROJECT-ID" -- /etc/sysconfig/network /etc/hosts
+    replace "/vagrant" "/vagrant/web" -- /etc/nginx/conf.d/default.conf
+    service nginx reload
+    hostname "PROJECT-ID"
+    mysqladmin create "PROJECT-ID"
   SHELL
 end

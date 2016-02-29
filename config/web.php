@@ -23,7 +23,7 @@ $config = [
         'assetManager' => [
             'appendTimestamp' => true,
             'linkAssets' => true,
-            'assets' => require __DIR__.'/assets.php',
+            'bundles' => require __DIR__.'/assets.php',
         ],
     ],
 ];
