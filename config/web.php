@@ -9,30 +9,21 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '',
         ],
+
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-            'loginUrl' => ['auth/login'],
+            'loginUrl' => ['frontoffice/auth/login'],
         ],
+
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'frontoffice/site/error',
         ],
-        'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-        ],
+
         'assetManager' => [
             'appendTimestamp' => true,
             'linkAssets' => true,
-            'bundles' => [
-                'yii\web\JqueryAsset' => [
-                    'js' => [
-                        YII_ENV_DEV ? 'jquery.js' : 'jquery.min.js',
-                    ],
-                ],
-            ],
-        ],
-        'view' => [
-            'class' => 'app\base\View',
+            'assets' => require __DIR__.'/assets.php',
         ],
     ],
 ];

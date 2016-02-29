@@ -8,7 +8,7 @@ INSTALLATION
 
 First step is to create project via Composer:
 ~~~
-composer global require "fxp/composer-asset-plugin:~1.0.3"
+composer global require "fxp/composer-asset-plugin:~1.1.2"
 composer create-project --prefer-dist herroffizier/yii2-app my-app
 ~~~
 

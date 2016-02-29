@@ -2,7 +2,6 @@
 
 namespace app\controllers\frontoffice;
 
-use Yii;
 use app\base\FrontOfficeController;
 
 class SiteController extends FrontOfficeController
@@ -11,7 +10,7 @@ class SiteController extends FrontOfficeController
     {
         return [
             'error' => [
-                'class' => 'yii\web\ErrorAction',
+                'class' => 'app\base\ErrorAction',
             ],
         ];
     }

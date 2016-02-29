@@ -13,18 +13,9 @@ $config = [
         'gii' => 'yii\gii\Module',
     ],
     'components' => [
-        'cache' => [
-            'class' => 'yii\caching\MemCache',
-        ],
-        'log' => [
-        ],
-        'uploads' => [
-            'class' => 'app\components\UploadManager',
-            'uploadDir' => '@app/web/upload',
-        ],
         'urlManager' => [
             'baseUrl' => WEB_ALIAS,
-            'hostInfo' => WEB_HOST,
+            'hostInfo' => WEB_HOST_PROTOCOL.WEB_HOST_SUFFIX,
         ],
     ],
 ];

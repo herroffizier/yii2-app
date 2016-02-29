@@ -3,14 +3,13 @@
 namespace app\commands;
 
 use Yii;
-use yii\console\Exception;
+use yii\console\Controller;
 use yii\helpers\FileHelper;
-use app\base\ConsoleController;
 
 /**
  * Управление картой классов.
  */
-class ClassmapController extends ConsoleController
+class ClassmapController extends Controller
 {
     protected function generateMapFile($mapFile, $map)
     {
@@ -47,7 +46,7 @@ class ClassmapController extends ConsoleController
                     }
                 }
 
-                return null;
+                return;
             },
             'only' => ['*.php'],
             'except' => [

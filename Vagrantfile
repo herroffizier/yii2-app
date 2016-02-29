@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "herroffizier/centos-6.5-i686"
+  config.vm.box = "herroffizier/php7"
 
   config.vm.network "private_network", ip: "VAGRANT-IP"
 

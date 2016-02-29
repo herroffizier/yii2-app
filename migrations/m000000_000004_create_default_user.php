@@ -7,7 +7,7 @@ class m000000_000004_create_default_user extends Migration
     public function up()
     {
         $user = new app\models\User();
-        $user->email = 'korotin@sysntec.ru';
+        $user->email = 'admin';
         $user->password = 'q123456';
         $user->save();
     }

@@ -21,7 +21,7 @@ if (!file_exists($envFile)) {
 
 $revFile = __DIR__.'/revision';
 if (file_exists($revFile)) {
-    define('REVISION', file_get_contents($revFile));
+    define('REVISION', trim(file_get_contents($revFile)));
 } else {
     define('REVISION', null);
 }

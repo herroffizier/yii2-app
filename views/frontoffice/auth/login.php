@@ -12,18 +12,20 @@ $this->title = 'Вход';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
-    <div class="col-lg-offset-4 col-lg-4">
+    <div class="col-sm-offset-4 col-sm-4">
         <div class="row">
-            <h1><?= Html::encode($this->title) ?></h1>
+            <div class="col-sm-12">
+                <h1><?= Html::encode($this->title) ?></h1>
 
-            <hr/>
+                <hr/>
+            </div>
         </div>
 
         <?php $form = ActiveForm::begin([
             'id' => 'login-form',
             'options' => ['class' => 'form-horizontal'],
             'fieldConfig' => [
-                'template' => '<div class="row"><div class="col-lg-4">{label}</div><div class="col-lg-8">{input}{error}</div></div>',
+                'template' => '<div class="col-lg-4 col-sm-12">{label}</div><div class="col-lg-8 col-sm-12">{input}{error}</div>',
             ],
         ]); ?>
 
@@ -31,10 +33,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= $form->field($model, 'password')->passwordInput() ?>
 
-        <?= $form->field($model, 'rememberMe', ['template' => '<div class="row"><div class="col-lg-offset-4 col-lg-8">{input}{error}</div></div>'])->checkbox() ?>
+        <?= $form->field($model, 'rememberMe', ['template' => '<div class="col-lg-offset-4 col-lg-8 col-sm-12">{input}{error}</div>'])->checkbox() ?>
 
         <div class="row pull-right">
-            <?= Html::submitButton('Вход', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+            <div class="col-sm-12">
+                <?= Html::submitButton('Вход', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+            </div>
         </div>
 
         <?php ActiveForm::end(); ?>
